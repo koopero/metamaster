@@ -1,5 +1,5 @@
-module.exports = exiftool;
-exiftool.keys = ['dimensions','time'];
+exports.processFile = exiftool
+exports.providesKeys = ['dimensions','time'];
 
 
 const

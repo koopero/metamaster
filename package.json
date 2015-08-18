@@ -3,24 +3,23 @@
   "version": "0.0.2",
   "description": "Extracts metadata from files, with configurable thoroughness.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
   "bin": {
     "metamaster": "bin/metamaster"
   },
   "author": "Samm Zuest Cooper <samm@sublight.ca>",
   "license": "MIT",
   "dependencies": {
-    "underscore": "~1.7.0",
-    "async": "~0.9.0",
-    "mmmagic": "~0.3.13",
     "argparse": "~0.1.16",
+    "async": "~0.9.0",
     "handlebars": "~2.0.0",
-    "imagemagick-identify-parser": "0.0.3"
+    "imagemagick-identify-parser": "0.0.3",
+    "lodash": "^3.10.1",
+    "mmmagic": "~0.3.13",
+    "underscore": "~1.7.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/koopero/metamaster.git"

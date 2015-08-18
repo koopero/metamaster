@@ -1,6 +1,5 @@
-module.exports = dimensions;
-dimensions.trivial = true;
-dimensions.weight = 5;
+exports.processData = dimensions
+exports.weight = 5
 
 
 function dimensions() {

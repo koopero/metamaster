@@ -1,32 +1,21 @@
-module.exports = readdir;
-
-readdir.keys = [ 'file','type','subtype','size'];
-
-
-const
-  fs = require('fs')
-;
+exports.processFile = readdir
+exports.keys = [ 'file','type','subtype','size'];
 
 
-function readdir( cb ) {
-  var
-    scope = this,
-    file = scope.file,
-    opt = {
-      noHidden: true
-    }
-  ;
+function readdir( file ) {
+  var Result = this.Result
+    , Promise = require('bluebird-extra')
+    , fs = Promise.promisifyAll(require("fs"))
+    , noHidden = this.getOption( 'noHidden', true )
+    , statFunc = followSymlink ? fs.lstatAsync : fs.lstatAsync
 
-  if ( !file )
-    return false;
+  return fs.readdirAsync( file )
+    .then( function( listing ) {
+      if ( noHidden )
+        listing = listing.filter( function( str ) {
+          return str.substr(0,1) !== '.'
+        })
 
-
-  fs.readdir( file, function( err, listing ) {
-    if ( listing && opt.noHidden )
-      listing = listing.filter( function( str ) {
-        return str.substr(0,1) !== '.';
-      });
-
-    cb( err, listing );
-  } );
+      return new Result( 'readdir', listing )
+    } )
 }
